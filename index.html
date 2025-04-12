@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Jeshlina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Great Vibes', cursive;
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+      scroll-behavior: smooth;
+      position: relative;
+      z-index: 1;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('489841814_1216051256759230_3017179544240767309_n.jpg') center top / cover no-repeat;
+      background-attachment: fixed;
+      z-index: -1;
+      opacity: 0;
+      animation: fadeInBg 2.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeInBg {
+      to {
+        opacity: 1;
+      }
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffb6c1;
+    }
+
+    section {
+      padding: 60px 20px;
+      margin-top: 70px;
+    }
+
+    .header {
+      padding: 30px;
+      font-size: 2.5em;
+      color: #ffb6c1;
+    }
+
+    .typing {
+      font-size: 2em;
+      color: #ffb6c1;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 4px solid #ffb6c1;
+      width: 0;
+      animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 800px;
+      border-radius: 15px;
+      font-size: 1.5em;
+      color: #ffe4e1;
+      backdrop-filter: blur(6px);
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .gallery img,
+    .gallery video {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover,
+    .gallery video:hover {
+      transform: scale(1.05);
+    }
+
+    .magic-button {
+      margin-top: 20px;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff6ec4;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff8f0;
+      color: #333;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 500px;
+      z-index: 1000;
+      transition: transform 0.4s ease;
+    }
+
+    .popup.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    #musicControl {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 0 10px #ff69b4;
+      transition: transform 0.2s;
+      z-index: 1001;
+    }
+
+    #musicControl:hover {
+      transform: scale(1.2);
+    }
+
+    #poem {
+      padding: 60px 20px;
+      background: rgba(255, 182, 193, 0.08);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 60px auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s ease-out;
+      visibility: hidden;
+    }
+
+    #poem.visible {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    .poem-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      color: #ffb6c1;
+      margin-bottom: 25px;
+      text-shadow: 0 0 5px #ff69b4;
+    }
+
+    .poem-container {
+      font-size: 1.6em;
+      font-family: 'Great Vibes', cursive;
+      color: #ffe4e1;
+      line-height: 1.8;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#story">Our Story</a>
+    <a href="#special">Special Moments</a>
+    <a href="#future">Future Plans</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#videos">Videos</a>
+    <a href="#poem">Poem</a>
+  </nav>
+
+  <section id="header">
+    <div class="header">
+      <div class="typing">For Jeshlina 💖</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="message">
+      My dearest Jeshlina, <br><br>
+      You're the light in my world, the beat in my heart, and the magic in my life. This page is just a glimpse of the love I feel for you every day. Here's to our memories, laughter, and forever together 💘
+    </div>
+  </section>
+
+  <section id="story">
+    <h2>Our Story</h2>
+    <div class="message">
+      From the moment we met, I knew we were destined to share something special. Our bond has grown stronger with every passing day, and each moment we've shared is etched in my heart forever.
+    </div>
+  </section>
+
+  <section id="special">
+    <h2>Special Moments</h2>
+    <div class="message">
+      Whether it's a quiet evening spent in each other's company or an adventure filled with laughter, every memory with you is a treasure.
+    </div>
+  </section>
+
+  <section id="future">
+    <h2>Our Future</h2>
+    <div class="message">
+      As we look ahead, I see a future filled with love, laughter, and endless adventures. With you by my side, the future is bright. 💫
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Our Beautiful Memories</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/200" alt="Memory 1">
+      <img src="https://via.placeholder.com/200" alt="Memory 2">
+      <img src="https://via.placeholder.com/200" alt="Memory 3">
+      <img src="https://via.placeholder.com/200" alt="Memory 4">
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>Our Precious Videos 🎥</h2>
+    <div class="gallery">
+      <video controls>
+        <source src="SnapInsta.to_AQPgKEIK8jRo_RCDrc9Vxs8nNg9lBWEWeont1KGX4XyzrTgdPexAmy_erQrYbrv6pBLeCappeUycoys7Si7IukavUprWAC8I4aMPRa8.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="SnapInsta.to_AQNyDuUuxLq_wAsC6SCegBBPuT0f9KYR9Pf8v5fpyb8OUqrdqEmWOEU8wroPee-mYDcRwRju8Pb8Wz2j65xwm9nNd-q71h-jYTT46h4.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="SnapInsta.to_AQN0w9XILAY8qnIsTO1XnsfsuDpKThTo3wxnKMoghk5Tg-7MwZD97A7yAgJPeuxeOyA2uUorevrbbU2ksWwgvugipCZSAV8PrTwO6NM.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <section id="poem">
+    <h2 class="poem-title">A Surprise Poem Just for You 🌙</h2>
+    <div class="poem-container">
+      <p>
+        In every laugh, I find my peace,<br />
+        In every glance, my heart's release.<br />
+        You’re my calm, my wild, my light,<br />
+        The wish I make each starry night.<br /><br />
+        Through every storm and sunny day,<br />
+        I’d choose you, again—always. 💖
+      </p>
+    </div>
+  </section>
+
+  <button class="magic-button" onclick="triggerMagic()">✨ Magic Button ✨</button>
+  <div class="popup" id="loveLetter">
+    <h2>My Love Letter 📝</h2>
+    <p>From the very first moment I saw you, I knew my world had changed. You are everything I ever dreamed of and more. I love you endlessly and forever. 💌</p>
+  </div>
+
+  <!-- Audio -->
+  <audio id="clickSound" src="https://www.myinstants.com/media/sounds/pop-up-off.mp3"></audio>
+  <audio id="magicSound" src="https://www.myinstants.com/media/sounds/magic-chime.mp3"></audio>
+  <audio id="bgMusic" src="Perfect - 320Kbps-(Mr-Jat.in).mp3" loop></audio>
+  <audio id="poemSound" src="https://www.myinstants.com/media/sounds/magic-chime.mp3"></audio>
+
+  <!-- Music Toggle -->
+  <button id="musicControl" onclick="toggleMusic()" title="Toggle Music">🔇</button>
+
+  <script>
+    // Wait until the page is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      const music = document.getElementById("bgMusic");
+      const musicBtn = document.getElementById("musicControl");
+
+      // Try to play background music
+      setTimeout(() => {
+        music.play().then(() => {
+          musicBtn.textContent = "🔊";
+        }).catch(() => {
+          musicBtn.textContent = "🔇";
+        });
+      }, 1000);
+
+      // Reveal poem and play chime when in view
+      const poem = document.getElementById("poem");
+      const poemSound = document.getElementById("poemSound");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            poem.classList.add("visible");
+            poemSound.play();
+          }
+        });
+      }, { threshold: 0.4 });
+      observer.observe(poem);
+
+      // Pause all other videos when one is played
+      const videos = document.querySelectorAll("video");
+      videos.forEach((video) => {
+        video.addEventListener("play", () => {
+          videos.forEach((v) => {
+            if (v !== video) v.pause();
+          });
+        });
+      });
+    });
+
+    // Magic button behavior
+    function triggerMagic() {
+      document.getElementById("loveLetter").classList.add("show");
+      document.getElementById("clickSound").play();
+      document.getElementById("magicSound").play();
+      document.getElementById("bgMusic").play();
+      document.getElementById("musicControl").textContent = "🔊";
+    }
+
+    // Music toggle
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      const button = document.getElementById("musicControl");
+      if (music.paused) {
+        music.play();
+        button.textContent = "🔊";
+      } else {
+        music.pause();
+        button.textContent = "🔇";
+      }
+    }
+  </script>
+</body>
+</html>
